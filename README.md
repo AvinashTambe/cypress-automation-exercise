@@ -77,7 +77,7 @@ To install Cypress in your project, follow these steps:
 ## Installation & Setup  
 Clone the repository:  
 ```sh
-git clone https://github.com/AvinashTambe/cypress-automation-framework.git
+git clone https://github.com/AvinashTambe/cypress-automation-exercise.git
 cd cypress-automation-framework
 ```  
 
