@@ -35,7 +35,7 @@ export enum HomePageLocators {
     scrollupButton = "#scrollUp"
 }   
 
-enum LoginPageLocators {
+export enum LoginPageLocators {
     loginText = "//h2[.='Login to your account']",
     loginEmail ="input[data-qa='login-email']",
     loginPassword = "input[data-qa='login-password']",
@@ -47,7 +47,31 @@ enum LoginPageLocators {
     signupButton = "button[data-qa='signup-button']",
 }
 
-enum ProuctsPageLocators {
+export enum ProuctsPageLocators {
     searchBox = "#search_product",
     searchButton = "#submit_search",
+}
+
+export enum SignupPageLocators {
+    mrradioButton = "label[for='id_gender1']",
+    mrsradioButton = "label[for='id_gender2']",
+    name = "input[data-qa='name']",
+    email = "input[data-qa='email']",
+    password = "input[data-qa='password']",
+    day = "select[data-qa='days']",
+    month = "select[data-qa='months']",
+    year = "select[data-qa='years']",
+    newsletterCheckbox = "#newsletter",
+    specialoffersCheckbox = "#optin",
+    firstName = "input[data-qa='first_name']",
+    lastName = "input[data-qa='last_name']",
+    company = "input[data-qa='company']",
+    address1 = "input[data-qa='address']",
+    address2 = "input[data-qa='address2']",
+    country = "select[data-qa='country']",
+    state = "input[data-qa='state']",
+    city = "input[data-qa='city']",
+    zipcode = "input[data-qa='zipcode']",
+    mobileNumber = "input[data-qa='mobile_number']",
+    createAccountButton = "button[data-qa='create-account']",
 }
