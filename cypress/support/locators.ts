@@ -1,0 +1,53 @@
+export enum HomePageLocators {
+    homeButton = ".fa fa-home",
+    productsButton = "a[href='/products']",
+    cartButton = "a[href='/view_cart']:contains('Cart')",
+    signup_loginButton = "a[href='/login']",
+    testcasesButton = "a[href='/test_cases']:contains[' Test Cases']",  
+    apitestingButon = "a[href='/api_list']:conatins[' API Testing']",
+    videotutorialsButton = ".fa.fa-youtube-play",
+    contactUsButton = "a[href='/contact_us']",
+    logo = "img[alt*='Website for automation practice']",
+    sliderleftArrow = "a[class='left control-carousel hidden-xs']",
+    sliderrightArrow = "a[class='right control-carousel hidden-xs']",
+    leftSidebar = '.left-sidebar',
+    productsCategory = "div[class*='panel-group category-products']",
+    womenCategory = "a[href='#Women']",
+    menCategory = "a[href='#Men']",
+    kidsCategory = "a[href='#Kids']",
+    brandsCategory = ".brands_products",
+    brandPolo = "a[href*='/brand_products/Polo']",
+    brandHM = "a[href*='/brand_products/H&M']",
+    brandMadame = "a[href*='/brand_products/Madame']",
+    brandMastHarbour = "a[href='/brand_products/Mast & Harbour']",
+    brandBabyhug = "a[href='/brand_products/Babyhug']",
+    brandAllenSolly = "a[href='/brand_products/Allen Solly Junior']",
+    brandKooiekids = "a[href='/brand_products/Kookie Kids']",
+    brandBiba = "a[href='/brand_products/Biba']",
+    featuresitemsHeader = ".features_items",
+    featureitemsTable = "div.col-sm-4:not([css='1'])",
+    recommendeditemsHeader = ".recommended_items",
+    recommendedleftArrow = ".left.recommended-item-control",
+    recommendedrightArrow = ".right.recommended-item-control",
+    subscribitionText = "//h2[.='Subscription']",
+    subscribeEmail = "#susbscribe_email",
+    subscribeButton = "#subscribe",
+    scrollupButton = "#scrollUp"
+}   
+
+enum LoginPageLocators {
+    loginText = "//h2[.='Login to your account']",
+    loginEmail ="input[data-qa='login-email']",
+    loginPassword = "input[data-qa='login-password']",
+    loginButton = "button[data-qa='login-button']",
+    orText = ".or",
+    signupText = "//h2[.='New User Signup!']",
+    signupName = "input[data-qa='signup-name']",
+    signupEmail = "input[data-qa='signup-email']",
+    signupButton = "button[data-qa='signup-button']",
+}
+
+enum ProuctsPageLocators {
+    searchBox = "#search_product",
+    searchButton = "#submit_search",
+}
