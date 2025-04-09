@@ -6,8 +6,8 @@ class SignUpPage {
     
     static visitSignUpPage = () => {
         cy.visit(`${BASE_URL}${ROUTES.SIGNUP}`)
-            //.title().should('eq', 'Automation Exercise - Signup / Login')
-            //.url().should('eq', 'https://www.automationexercise.com/signup');
+            .title().should('eq', 'Automation Exercise - Signup / Login')
+            .url().should('eq', 'https://www.automationexercise.com/signup');
     }
 
     static selectMaleRadioButton = () => {
@@ -28,7 +28,7 @@ class SignUpPage {
             .type(name);
     }
 
-    static enterEmail = (email : string) => {
+    static enterEmail = () => {
         cy.get(SignupPageLocators.email)
             .should('be.disabled')
     }
@@ -134,6 +134,48 @@ class SignUpPage {
             .should('be.visible')
             .click();
     }
+
+    static validateAccountCreatedText = () => {
+        cy.get(SignupPageLocators.accountCreatedText)
+            .should('be.visible')
+            .and('have.text', 'Account Created!')
+    }
+
+    static clickContinueButton = () => {
+        cy.get(SignupPageLocators.continueButton)
+            .should('be.visible')
+            .click();
+    }
+
+    static validateLoggedInUserName = (firstname : string, lastname : string) => {
+        const expectedText = `Logged in as ${firstname} ${lastname}`;
+        cy.get(SignupPageLocators.loggedInText)
+            .should('be.visible')
+            .invoke('text')
+            .then((text) => {
+                const trimmedText = text.trim();
+                expect(trimmedText).to.include(expectedText);
+            });
+    }
+
+    static validateExistingAccountText = () => {
+        cy.get(SignupPageLocators.emailExistsText)
+            .should('be.visible')
+            .and('have.text','Email Address already exist!');
+    }
+
+    static clickDeleteAccountButton = () => {
+        cy.get(SignupPageLocators.deleteAccountButton)
+            .should('be.visible')
+            .click();
+    }
+
+    static validateAccountDeletedText = () => {
+        cy.get(SignupPageLocators.accountDeletedText)
+            .should('be.visible')
+            .and('have.text','ACCOUNT DELETED!');   
+    }
+
 }
 
 export default SignUpPage;

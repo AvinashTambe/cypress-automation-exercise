@@ -70,6 +70,13 @@ class LoginPage {
             expect(inputEl.validationMessage).to.contain(expectedMessage);
         });
     }
+
+    static clickLogoutButton = () => {
+        cy.get(LoginPageLocators.logoutButton)
+            .should('be.visible')
+            .click();
+        cy.url().should('eq','https://www.automationexercise.com/login');
+    }
 }
 
 export default LoginPage;

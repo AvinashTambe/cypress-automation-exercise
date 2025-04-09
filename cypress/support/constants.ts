@@ -10,3 +10,20 @@ export const ROUTES = {
     CONTACT_US: '/contact_us', 
 }
 
+export const USER_INFO = {
+    FIRST_NAME: 'Avinash',
+    LAST_NAME: 'Test',
+    EMAIL: 'avinash.test.test@gmail.com',
+    PASSWORD: 'Test@1234',
+    B_DAY: '1',
+    B_MONTH: 'January',
+    B_YEAR: '1990',
+    ADDRESS1: 'Test Address 1',
+    ADDRESS2: 'Test Address 2',
+    COUNTRY: 'India',
+    STATE: 'Maharashtra',
+    CITY: 'Mumbai',
+    ZIPCODE: '400001',
+    MOBILE_NUMBER: '1234567890',
+
+}

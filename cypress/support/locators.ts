@@ -45,6 +45,7 @@ export enum LoginPageLocators {
     signupName = "input[data-qa='signup-name']",
     signupEmail = "input[data-qa='signup-email']",
     signupButton = "button[data-qa='signup-button']",
+    logoutButton = "a[href='/logout']",
 }
 
 export enum ProuctsPageLocators {
@@ -74,4 +75,10 @@ export enum SignupPageLocators {
     zipcode = "input[data-qa='zipcode']",
     mobileNumber = "input[data-qa='mobile_number']",
     createAccountButton = "button[data-qa='create-account']",
+    accountCreatedText = "h2[data-qa='account-created']",
+    continueButton = "a[data-qa='continue-button']",
+    loggedInText = "a:has(i.fa-user)",
+    accountDeletedText = "h2[data-qa='account-deleted']",
+    deleteAccountButton = "a[href='/delete_account']",
+    emailExistsText = "p[style='color: red;']",
 }
