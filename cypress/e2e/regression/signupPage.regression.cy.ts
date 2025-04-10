@@ -65,7 +65,7 @@ describe('Signup Test Suite Negative Testcase', () => {
                 SignUpPage.clickCreateAccountButton();
                 SignUpPage.validateAccountCreatedText();
                 SignUpPage.clickContinueButton();
-                SignUpPage.validateLoggedInUserName(USER_INFO.FIRST_NAME, USER_INFO.LAST_NAME);
+                LoginPage.validateLoggedInUserName(USER_INFO.FIRST_NAME, USER_INFO.LAST_NAME);
                 LoginPage.clickLogoutButton();
             });
         });

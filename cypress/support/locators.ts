@@ -47,6 +47,7 @@ export enum LoginPageLocators {
     signupButton = "button[data-qa='signup-button']",
     logoutButton = "a[href='/logout']",
     loginCredentialsToaster = "p[style='color: red;']",
+    loggedInText = "a:has(i.fa-user)",
 }
 
 export enum ProuctsPageLocators {
@@ -78,7 +79,6 @@ export enum SignupPageLocators {
     createAccountButton = "button[data-qa='create-account']",
     accountCreatedText = "h2[data-qa='account-created']",
     continueButton = "a[data-qa='continue-button']",
-    loggedInText = "a:has(i.fa-user)",
     accountDeletedText = "h2[data-qa='account-deleted']",
     deleteAccountButton = "a[href='/delete_account']",
     emailExistsText = "p[style='color: red;']",

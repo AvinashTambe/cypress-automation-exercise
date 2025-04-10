@@ -53,11 +53,22 @@ class LoginPage {
         });
     }
 
-    static validateLoginCredentialsToaster = (email : string, password : string) => {
+    static validateLoginCredentialsToaster = () => {
         cy.get(LoginPageLocators.loginCredentialsToaster)
             .should('be.visible')
             .and('contain', 'Your email or password is incorrect!')
     }
+
+    static validateLoggedInUserName = (firstname : string, lastname : string) => {
+            const expectedText = `Logged in as ${firstname} ${lastname}`;
+            cy.get(LoginPageLocators.loggedInText)
+                .should('be.visible')
+                .invoke('text')
+                .then((text) => {
+                    const trimmedText = text.trim();
+                    expect(trimmedText).to.include(expectedText);
+                });
+        }
 
     static clickLogoutButton = () => {
         cy.get(LoginPageLocators.logoutButton)

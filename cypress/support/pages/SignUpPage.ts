@@ -194,17 +194,6 @@ class SignUpPage {
             .click();
     }
 
-    static validateLoggedInUserName = (firstname : string, lastname : string) => {
-        const expectedText = `Logged in as ${firstname} ${lastname}`;
-        cy.get(SignupPageLocators.loggedInText)
-            .should('be.visible')
-            .invoke('text')
-            .then((text) => {
-                const trimmedText = text.trim();
-                expect(trimmedText).to.include(expectedText);
-            });
-    }
-
     static validateExistingAccountText = () => {
         cy.get(SignupPageLocators.emailExistsText)
             .and('have.text','Email Address already exist!');
