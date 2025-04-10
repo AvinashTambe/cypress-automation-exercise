@@ -1,7 +1,8 @@
 import LoginPage from "cypress/support/pages/LoginPage";
 import SignUpPage from "cypress/support/pages/SignUpPage";
-import { BASE_URL, USER_INFO } from "cypress/support/constants";
+import { BASE_URL, ROUTES, USER_INFO } from "cypress/support/constants";
 import { LoginPageLocators } from "cypress/support/locators";
+import { cli } from "cypress";
 
 
 describe('Login Regression Test Suite', () => {
@@ -37,6 +38,20 @@ describe('Login Regression Test Suite', () => {
         LoginPage.validateLoginCredentialsToaster();
     });
 
+    it('Attempt login with case-sensitive email', () => {
+        const uppercaseEmail = USER_INFO.EMAIL.toUpperCase()
+        LoginPage.enterLoginEmail(uppercaseEmail);
+        LoginPage.enterLoginPassword(USER_INFO.PASSWORD);
+        LoginPage.clickLoginButton();
+        LoginPage.validateLoginCredentialsToaster();
+    })
+
+    it('Attempt login with missing domain name', () => {
+        const email = 'avinash.test@';
+        LoginPage.enterLoginEmail(email);
+        LoginPage.missingDomainToaster(email);
+    })
+
     it('Attempt login with whitespace in email', () => {
         const email = '   USER_INFO.EMAIL   '; // Email with leading and trailing whitespace
         LoginPage.enterLoginEmail(email); // Entering email with whitespace
@@ -56,8 +71,8 @@ describe('Login Regression Test Suite', () => {
         LoginPage.enterLoginPassword(USER_INFO.PASSWORD);
         LoginPage.clickLoginButton();
         LoginPage.validateLoggedInUserName(USER_INFO.FIRST_NAME, USER_INFO.LAST_NAME);
-        cy.url().should('eq', {BASE_URL})
-        LoginPage.clickLoginButton();
+        cy.url().should('eq', `${BASE_URL}${ROUTES.HOME}`)
+        LoginPage.clickLogoutButton();
     });
 
     it('Validate that user remains logged in after page reload', () => {
@@ -69,8 +84,8 @@ describe('Login Regression Test Suite', () => {
         
         // Validate that the user is still logged in
         LoginPage.validateLoggedInUserName(USER_INFO.FIRST_NAME, USER_INFO.LAST_NAME);
-        cy.url().should('eq', {BASE_URL})
-        LoginPage.clickLoginButton();
+        cy.url().should('eq', `${BASE_URL}${ROUTES.HOME}`)
+        LoginPage.clickLogoutButton();
     });
 
     it('User should not be able to go back to login page after logging in', () => {
@@ -82,7 +97,8 @@ describe('Login Regression Test Suite', () => {
         cy.go('back');
         
         // Validate that the user is redirected to the home page
-        cy.url().should('eq', {BASE_URL});
+        cy.url().should('eq', `${BASE_URL}${ROUTES.HOME}`);
+        LoginPage.clickLogoutButton();
     });
 
 });

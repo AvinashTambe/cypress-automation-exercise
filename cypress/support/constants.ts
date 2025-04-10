@@ -1,6 +1,7 @@
 export const BASE_URL = 'https://www.automationexercise.com'; 
 
 export const ROUTES = {
+    HOME: '/',
     PRODUCTS: '/products',
     LOGIN: '/login',
     SIGNUP: '/signup',

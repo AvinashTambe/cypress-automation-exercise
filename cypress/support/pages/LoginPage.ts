@@ -60,15 +60,24 @@ class LoginPage {
     }
 
     static validateLoggedInUserName = (firstname : string, lastname : string) => {
-            const expectedText = `Logged in as ${firstname} ${lastname}`;
-            cy.get(LoginPageLocators.loggedInText)
-                .should('be.visible')
-                .invoke('text')
-                .then((text) => {
-                    const trimmedText = text.trim();
-                    expect(trimmedText).to.include(expectedText);
-                });
-        }
+        const expectedText = `Logged in as ${firstname} ${lastname}`;
+        cy.get(LoginPageLocators.loggedInText)
+            .should('be.visible')
+            .invoke('text')
+            .then((text) => {
+                const trimmedText = text.trim();
+                expect(trimmedText).to.include(expectedText);
+            });
+    }
+
+    static missingDomainToaster = (email : string) => {
+        cy.get(LoginPageLocators.loginEmail).should('exist').then(($input) => {
+            const inputEl = $input[0] as HTMLInputElement;
+            expect(inputEl.checkValidity()).to.be.false;
+            const expectedMessage = `Please enter a part following '@'. '${email}' is incomplete.`;
+            expect(inputEl.validationMessage).to.contain(expectedMessage)
+        });
+    }
 
     static clickLogoutButton = () => {
         cy.get(LoginPageLocators.logoutButton)

@@ -13,47 +13,56 @@ class SignUpPage {
     //Sign Up Form Actions
 
     static enterSignupName = (name : string) => {
-            cy.get(LoginPageLocators.signupName)
-                .should('be.visible')
-                .type(name);
-        }
+        cy.get(LoginPageLocators.signupName)
+            .should('be.visible')
+            .type(name);
+    }
     
-        static enterSignupEmail = (email : string) => {
-            cy.get(LoginPageLocators.signupEmail)
-                .should('be.visible')
-                .type(email);
-        }
+    static enterSignupEmail = (email: string) => {
+        cy.get(LoginPageLocators.signupEmail)
+            .should('be.visible')
+            .type(email);
+    }
+
+    static clickSignupButton = () => {
+        cy.get(LoginPageLocators.signupButton)
+            .should('be.visible')
+            .click();
+    }
+
+    static validateSignUpNameToaster = () => {
+        cy.get(LoginPageLocators.signupName).should('exist').then(($input) => {
+            const inputEl = $input[0] as HTMLInputElement;
+            expect(inputEl.checkValidity()).to.be.false; // The check should be FALSE since the field is empty and required
+            expect(inputEl.validationMessage).to.contain('Please fill in this field');
+        });
+    }
     
-        static clickSignupButton = () => {
-            cy.get(LoginPageLocators.signupButton)
-                .should('be.visible')
-                .click();
-        }
-    
-        static validateSignUpNameToaster = () => {
-            cy.get(LoginPageLocators.signupName).should('exist').then(($input) => {
-                const inputEl = $input[0] as HTMLInputElement;
-                expect(inputEl.checkValidity()).to.be.false; //// The check should be FALSE since the field is empty and required
-                expect(inputEl.validationMessage).to.contain('Please fill in this field');
-            });
-        }
-    
-        static validateSignUpEmailToaster = () => {
-            cy.get(LoginPageLocators.signupEmail).should('exist').then(($input) => {
-                const inputEl = $input[0] as HTMLInputElement;
-                expect(inputEl.checkValidity()).to.be.false; //// The check should be FALSE since the field is empty and required
-                expect(inputEl.validationMessage).to.contain('Please fill in this field');
-            });
-        }
-    
-        static validateinvalidSignUpEmailToaster = (email : string) => {
-            cy.get(LoginPageLocators.signupEmail).should('exist').then(($input) => {
-                const inputEl = $input[0] as HTMLInputElement;
-                expect(inputEl.checkValidity()).to.be.false; //// The check should be FALSE since the field is empty and required
-                const expectedMessage = `Please include an '@' in the email address. '${email}' is missing an '@'.`;
-                expect(inputEl.validationMessage).to.contain(expectedMessage);
-            });
-        }
+    static validateSignUpEmailToaster = () => {
+        cy.get(LoginPageLocators.signupEmail).should('exist').then(($input) => {
+            const inputEl = $input[0] as HTMLInputElement;
+            expect(inputEl.checkValidity()).to.be.false; // The check should be FALSE since the field is empty and required
+            expect(inputEl.validationMessage).to.contain('Please fill in this field');
+        });
+    }
+
+    static validateInvalidSignUpEmailToaster = (email: string) => {
+        cy.get(LoginPageLocators.signupEmail).should('exist').then(($input) => {
+            const inputEl = $input[0] as HTMLInputElement;
+            expect(inputEl.checkValidity()).to.be.false; // The check should be FALSE since the field is invalid
+            const expectedMessage = `Please include an '@' in the email address. '${email}' is missing an '@'.`;
+            expect(inputEl.validationMessage).to.contain(expectedMessage);
+        });
+    }
+
+    static validateMissingDomainToaster = (email : string) => {
+        cy.get(LoginPageLocators.signupEmail).should('exist').then(($input) => {
+            const inputEl = $input[0] as HTMLInputElement;
+            expect(inputEl.checkValidity()).to.be.false;
+            const expectedMessage = `Please enter a part following '@'. '${email}' is incomplete.`
+            expect(inputEl.validationMessage).to.contain(expectedMessage)
+        });
+    }
     
     //Sign Up Form Actions
 

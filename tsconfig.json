@@ -4,7 +4,7 @@
       "module": "commonjs",
       "strict": true,
       "baseUrl": ".",
-      "types": ["cypress"],
+   // "types": ["cypress"],
       "esModuleInterop": true
     },
     "include": ["cypress/**/*.ts", "cypress.config.ts"]
