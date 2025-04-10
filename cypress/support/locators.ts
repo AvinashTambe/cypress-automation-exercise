@@ -46,6 +46,7 @@ export enum LoginPageLocators {
     signupEmail = "input[data-qa='signup-email']",
     signupButton = "button[data-qa='signup-button']",
     logoutButton = "a[href='/logout']",
+    loginCredentialsToaster = "p[style='color: red;']",
 }
 
 export enum ProuctsPageLocators {
