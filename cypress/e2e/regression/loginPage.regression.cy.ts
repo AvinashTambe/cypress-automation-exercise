@@ -1,8 +1,8 @@
 import LoginPage from "cypress/support/pages/LoginPage";
 import SignUpPage from "cypress/support/pages/SignUpPage";
 import { BASE_URL, ROUTES, USER_INFO } from "cypress/support/constants";
-import { LoginPageLocators } from "cypress/support/locators";
-import { cli } from "cypress";
+//import { LoginPageLocators } from "cypress/support/locators";
+//import { cli } from "cypress";
 
 
 describe('Login Regression Test Suite', () => {

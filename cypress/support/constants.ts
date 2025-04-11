@@ -3,6 +3,7 @@ export const BASE_URL = 'https://www.automationexercise.com';
 export const ROUTES = {
     HOME: '/',
     PRODUCTS: '/products',
+    BRAND_PRODUCT: '/brand_products',
     LOGIN: '/login',
     SIGNUP: '/signup',
     CART: '/view_cart',

@@ -27,6 +27,34 @@ class ProductPage {
             .click()
     }
 
+    static viewBrandProducts(brandname : string){
+        cy.contains(ProuctsPageLocators.branditems, brandname, {matchCase : false})
+            .should('be.visible')
+            .click();
+    }
+
+    static validateBrandHeader(brandname : string){
+        cy.get(ProuctsPageLocators.brandHeader)
+            .should('be.visible')
+            .and('have.text', `Brand - ${brandname} Products`)
+        cy.url().should('eq', `${BASE_URL}${ROUTES.BRAND_PRODUCT}/${brandname}`)
+    }
+
+    static getBrandProductCounts(brandname : string){
+        return cy.contains(ProuctsPageLocators.branditems, brandname).then(($brand) => {
+            const text = $brand.text(); // Now definitely a string
+            const match = text.match(/\((\d+)\)/);
+            const expectedCount = match ? parseInt(match[1]) : 0;
+            cy.log(`Expected product count for brand: ${expectedCount}`);
+            return cy.wrap(expectedCount);
+        });
+    }
+
+    static validateBrandProductCounts(count:number){
+        cy.get(ProuctsPageLocators.brandproductlist)
+            .should('have.length', count)
+    }
+
     static viewProductPrice(price : string) {
         cy.get(ProuctsPageLocators.productPrice)
             .should('be.visible')
@@ -52,3 +80,5 @@ class ProductPage {
     }
 
 }
+
+export default ProductPage;
