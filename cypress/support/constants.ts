@@ -29,3 +29,6 @@ export const USER_INFO = {
     MOBILE_NUMBER: '1234567890',
 
 }
+
+// Brands
+export const BRANDS = ['Polo', 'H&M', 'Madame', 'Mast & Harbour', 'Babyhug', 'Allen Solly Junior', 'Kookie Kids', 'Biba'];

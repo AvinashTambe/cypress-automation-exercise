@@ -1,4 +1,5 @@
 import  ProductPage  from "cypress/support/pages/ProductPage";
+import { BRANDS } from "cypress/support/constants";
 
 describe('Products Regression Test Suite', () => {
 
@@ -6,15 +7,16 @@ describe('Products Regression Test Suite', () => {
         ProductPage.visitProductPage();
     })
     
-    it('Validate all products are displayed for each product', ()=> {
-        const brandname = 'Polo';
-        ProductPage.viewBrandProducts(brandname);
-        ProductPage.validateBrandHeader(brandname);
-        ProductPage.getBrandProductCounts(brandname).then((expectedCount) => {
-            ProductPage.validateBrandProductCounts(expectedCount);
-        })
-        
-    });
+    BRANDS.forEach((brand) => {
+        it(`Validate product count for brand: ${brand}`, () => {
+          ProductPage.viewBrandProducts(brand);
+          ProductPage.validateBrandHeader(brand);
+          ProductPage.getBrandProductCounts(brand).then((count) => {
+            ProductPage.validateBrandProductCounts(count);
+          });
+        });
+      });
+    
 
 
 });

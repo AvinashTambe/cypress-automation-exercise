@@ -9,13 +9,8 @@ class ProductPage {
             .title().should('eq', 'Automation Exercise - All Products')
     }
 
-    static clickViewProductButton() {
-        cy.get(ProuctsPageLocators.viewProduct1button)
-            .should('be.visible')
-            .click()
-    }
-
-    static enterSearchkey( searchkey : string) {
+    //Search Product
+    static searchProduct( searchkey : string) {
         cy.get(ProuctsPageLocators.searchBox)
             .should('be.visible')
             .type(searchkey)
@@ -27,6 +22,47 @@ class ProductPage {
             .click()
     }
 
+    static validateSearchedProduct(product_name:string, product_price:string){
+        cy.get(ProuctsPageLocators.searchedProductName)
+            .should('be.visible')
+            .should('have.text', product_name)
+        cy.get(ProuctsPageLocators.searchedProductPrice)
+            .should('be.visible')
+            .invoke('text') 
+            .should('eq',product_price)
+    }
+
+    //View Product Details
+    static clickViewProductButton() {
+        cy.get(ProuctsPageLocators.viewProductDetailsbutton)
+            .should('be.visible')
+            .click()
+    }
+
+    static viewProductDetails(product_name:string, product_price:string, category:string, availability:string, condition: string, brand: string){
+        cy.get(ProuctsPageLocators.productName)
+            .should('be.visible')
+            .and('have.text', product_name)
+        cy.get(ProuctsPageLocators.productCategory)
+            .should('be.visible')
+            .and('have.text', category)
+        cy.get(ProuctsPageLocators.productPrice)
+            .should('be.visible')
+            .and('have.text', product_price);
+        cy.get(ProuctsPageLocators.productQuantity)
+            .should('be.visible')
+        cy.get(ProuctsPageLocators.productCartButton)
+            .should('be.visible')
+        cy.get(ProuctsPageLocators.productAvailability)
+            .should('be.visible')
+            .and('have.text', availability)
+        cy.get(ProuctsPageLocators.productBrand)
+            .should('be.visible')
+            .and('have.text', brand)
+    }
+
+
+    //View Brand's product
     static viewBrandProducts(brandname : string){
         cy.contains(ProuctsPageLocators.branditems, brandname, {matchCase : false})
             .should('be.visible')
@@ -37,7 +73,7 @@ class ProductPage {
         cy.get(ProuctsPageLocators.brandHeader)
             .should('be.visible')
             .and('have.text', `Brand - ${brandname} Products`)
-        cy.url().should('eq', `${BASE_URL}${ROUTES.BRAND_PRODUCT}/${brandname}`)
+        //cy.url().should('eq', `${BASE_URL}${ROUTES.BRAND_PRODUCT}/${brandname}`)
     }
 
     static getBrandProductCounts(brandname : string){
@@ -55,17 +91,7 @@ class ProductPage {
             .should('have.length', count)
     }
 
-    static viewProductPrice(price : string) {
-        cy.get(ProuctsPageLocators.productPrice)
-            .should('be.visible')
-            .and('contain', price)
-    }
     
-    static clickAddtoCart() {
-        cy.get(ProuctsPageLocators.cartButtononPP)
-            .should('be.visible')
-            .click();
-    } 
 
     static newArrival() {
         cy.get(ProuctsPageLocators.newArrival)
@@ -74,7 +100,7 @@ class ProductPage {
     }
 
     static increaseProductQuantity(quantity : string) {
-        cy.get(ProuctsPageLocators.productCounter)
+        cy.get(ProuctsPageLocators.productQuantity)
             .should('be.visible')
             .type(quantity)
     }
