@@ -1,5 +1,5 @@
-import { ProuctsPageLocators } from "../locators";
-import { BASE_URL, ROUTES } from "../constants";
+import { CartLocators, ProuctsPageLocators } from "../locators";
+import { BASE_URL, ROUTES, PRODUCT } from "../constants";
 
 class ProductPage {
 
@@ -22,6 +22,20 @@ class ProductPage {
             .click()
     }
 
+    static validateSearchedProductName(product_name:string){
+        cy.get(ProuctsPageLocators.searchedProductName)
+            .should('be.visible')
+            .should('have.text', product_name)
+
+    }
+
+    static validateSearchedProductPrice(product_price:string){
+        cy.get(ProuctsPageLocators.searchedProductPrice)
+            .should('be.visible')
+            .invoke('text') 
+            .should('eq',product_price)
+    }
+
     static validateSearchedProduct(product_name:string, product_price:string){
         cy.get(ProuctsPageLocators.searchedProductName)
             .should('be.visible')
@@ -30,21 +44,60 @@ class ProductPage {
             .should('be.visible')
             .invoke('text') 
             .should('eq',product_price)
+    
     }
 
-    //View Product Details
-    static clickViewProductButton() {
+    //View and Validate Product Details
+    static clickViewProductDetailsButton() {
         cy.get(ProuctsPageLocators.viewProductDetailsbutton)
             .should('be.visible')
             .click()
     }
 
-    static viewProductDetails(product_name:string, product_price:string, category:string, availability:string, condition: string, brand: string){
+    static validateProductDetailsName(product_name:string){
+        cy.get(ProuctsPageLocators.productName)
+            .should('be.visible')
+            .and('have.text', product_name)
+
+    }
+    static validateProductDetailsPrice(product_price:string){
+        cy.get(ProuctsPageLocators.productPrice)
+            .should('be.visible')
+            .and('have.text', product_price);
+    }
+
+    static validateProductDetailsCategory(product_category:string){
+        cy.get(ProuctsPageLocators.productCategory)
+        .should('be.visible')
+        .and('have.text', product_category)
+    }
+
+    static validateProductDetailsAvailiability(product_availability:string){
+        cy.get(ProuctsPageLocators.productAvailability)
+        .should('be.visible')
+        .and('have.text', product_availability)
+    }
+
+    static validateProductDetailsCondition(product_condition:string){
+        cy.get(ProuctsPageLocators.productCondition)
+        .should('be.visible')
+        .and('have.text', product_condition)
+    }
+
+    static validateProductDetailsBrand(product_brand:string){
+        cy.get(ProuctsPageLocators.productBrand)
+        .should('be.visible')
+        .and('have.text', product_brand)
+    }
+
+
+    static validateProductDetails(product_name:string, product_price:string, category:string, availability:string, condition: string, brand: string){
         cy.get(ProuctsPageLocators.productName)
             .should('be.visible')
             .and('have.text', product_name)
         cy.get(ProuctsPageLocators.productCategory)
             .should('be.visible')
+            //.invoke('text')
             .and('have.text', category)
         cy.get(ProuctsPageLocators.productPrice)
             .should('be.visible')
@@ -91,7 +144,6 @@ class ProductPage {
             .should('have.length', count)
     }
 
-    
 
     static newArrival() {
         cy.get(ProuctsPageLocators.newArrival)
@@ -104,6 +156,15 @@ class ProductPage {
             .should('be.visible')
             .type(quantity)
     }
+
+    //Add to cart
+
+    static clickProductAddtoCartButton(){
+        cy.get(ProuctsPageLocators.productCartButton)
+            .should('be.visible')
+            .click()
+    }
+
 
 }
 

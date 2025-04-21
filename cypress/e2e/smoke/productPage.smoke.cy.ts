@@ -1,33 +1,41 @@
 import ProductPage from "cypress/support/pages/ProductPage";
-import { BASE_URL } from "cypress/support/constants";
+import { BASE_URL, PRODUCT } from "cypress/support/constants";
 import { ProuctsPageLocators } from "cypress/support/locators";
+import CartPage from "cypress/support/pages/CartPage";
 
 describe('Products Smoke Test Suite', () =>{
    
+    
     beforeEach(()=>{
         ProductPage.visitProductPage()
     })
-    
-    it('Verify Search + View Product Details flow', () => {
-        const product_name = 'Blue Top';
-        const product_price = 'Rs. 500';
-        const category = 'Category: Women > Tops';
-        const availability = 'Availability: In Stock';
-        const condition = 'New';
-        const brand = 'Brand: Polo';
-    
-        ProductPage.searchProduct(product_name);
+
+    it('Verify Search functionality with valid particular product name', () => {
+        ProductPage.searchProduct(PRODUCT.NAME);
         ProductPage.clickSearchButton();
-    
         cy.get(ProuctsPageLocators.brandHeader)
             .should('be.visible')
             .should('have.text', 'Searched Products');
-    
-        ProductPage.validateSearchedProduct(product_name, product_price);
-        ProductPage.clickViewProductButton();
-    
-        ProductPage.viewProductDetails(product_name, product_price, category, availability, condition, brand);
+        ProductPage.validateSearchedProduct(PRODUCT.NAME, PRODUCT.PRICE);
     });
-    
+
+    it('Verify Product Details', () => {
+        ProductPage.searchProduct(PRODUCT.NAME);
+        ProductPage.clickSearchButton();
+        ProductPage.validateSearchedProduct(PRODUCT.NAME, PRODUCT.PRICE)
+        ProductPage.clickViewProductDetailsButton();
+        ProductPage.validateProductDetails(PRODUCT.NAME, PRODUCT.PRICE, PRODUCT.CATEGORY, PRODUCT.AVAILABILITY, PRODUCT.CONDITION, PRODUCT.BRAND);
+    });
+
+    it('Verify Add to Cart functionality', () =>{
+        ProductPage.searchProduct(PRODUCT.NAME);
+        ProductPage.clickSearchButton();
+        ProductPage.validateSearchedProduct(PRODUCT.NAME, PRODUCT.PRICE)
+        CartPage.clickAddtoCartButton();
+    })
+
+    it("Verify Gender based product filtering", () =>{
+        
+    })
     
 });

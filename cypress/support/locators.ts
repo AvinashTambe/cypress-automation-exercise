@@ -59,10 +59,17 @@ export enum ProuctsPageLocators {
     womenCategory = "a[href='#Women']",
     menCategory = "a[href='#Men']",
     kidsCategory = "a[href='#Kids']",
-    //Add to cart
-    addtoCartbutton = "data-product-id='2'",
-    continueShoppingButton = "button[data-dismiss='modal']",
-    viewitemAddedToCart = "a[href='/view_cart'][css='2']",
+    womenCategoryCollapseIcon = 'h4[class="panel-title"] a[href="#Women"]',
+    womenDress = "a[href='/category_products/1']",
+    womenTops = "a[href='/category_products/2']",
+    womenSarees = "a[href='/category_products/7']",
+    menCategoryCollapseIcon = 'h4[class="panel-title"] a[href="#Men"]',
+    menTshirts = "a[href='/category_products/3']",
+    menJeans = "a[href='/category_products/6']",
+    kidsCategoryCollapseIcon = 'h4[class="panel-title"] a[href="#Kids"]',
+    kidsDresses = "a[href='/category_products/4']",
+    KidsTops = "a[href='/category_products/5']",
+
     //Product Brand
     brandsCategory = ".brands_products",
     branditems = ".brands_products a",
@@ -106,4 +113,17 @@ export enum SignupPageLocators {
     accountDeletedText = "h2[data-qa='account-deleted']",
     deleteAccountButton = "a[href='/delete_account']",
     emailExistsText = "p[style='color: red;']",
+}
+
+export enum CartLocators {
+    //Add to cart
+    addtoCartbutton = "div[class='productinfo text-center'] a[class='btn btn-default add-to-cart']",
+    continueShoppingButton = "button[data-dismiss='modal']",
+    viewCartButton = "a[href='/view_cart'][css='2']",
+
+    //Cart list table
+    cartTableHeader = "tr.cart_menu", 
+    cartTableRows = 'tbody tr',
+    cartDescription = ".cart_description a",
+    cartDelete = '.cart_delete a'
 }

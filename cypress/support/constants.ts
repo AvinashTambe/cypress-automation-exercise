@@ -30,5 +30,18 @@ export const USER_INFO = {
 
 }
 
+export const PRODUCT = {
+    NAME : 'Blue Top',
+    PRICE : 'Rs. 500',
+    CATEGORY : 'Category: Women > Tops',
+    AVAILABILITY : 'Availability: In Stock',
+    CONDITION : 'New',
+    BRAND : 'Brand: Polo'
+}
+
 // Brands
 export const BRANDS = ['Polo', 'H&M', 'Madame', 'Mast & Harbour', 'Babyhug', 'Allen Solly Junior', 'Kookie Kids', 'Biba'];
+
+
+//Cart Header
+export const cartHeaders = ['Item', 'Description', 'Price', 'Quantity', 'Total'];
