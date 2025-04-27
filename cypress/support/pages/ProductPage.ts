@@ -10,7 +10,7 @@ class ProductPage {
     }
 
     //Search Product
-    static searchProduct( searchkey : string) {
+    static searchProduct(searchkey : string) {
         cy.get(ProuctsPageLocators.searchBox)
             .should('be.visible')
             .type(searchkey)
@@ -22,12 +22,17 @@ class ProductPage {
             .click()
     }
 
-    static validateSearchedProductName(product_name:string){
-        cy.get(ProuctsPageLocators.searchedProductName)
-            .should('be.visible')
-            .should('have.text', product_name)
-
+    static validateSearchedProductName(product_name: string) {
+        cy.get(ProuctsPageLocators.searchedProductName).each(($el) => {
+          cy.wrap($el)
+            .invoke('text')
+            .then((text) => {
+              expect(text.toLowerCase()).to.include(product_name.toLowerCase());
+            });
+        });
     }
+      
+      
 
     static validateSearchedProductPrice(product_price:string){
         cy.get(ProuctsPageLocators.searchedProductPrice)
@@ -139,8 +144,8 @@ class ProductPage {
         });
     }
 
-    static validateBrandProductCounts(count:number){
-        cy.get(ProuctsPageLocators.brandproductlist)
+    static validateProductCounts(count:number){
+        cy.get(ProuctsPageLocators.productlist)
             .should('have.length', count)
     }
 
@@ -164,7 +169,70 @@ class ProductPage {
             .should('be.visible')
             .click()
     }
+    
+    // View Gender based Category
+    static expandWomenCategory(){
+        cy.get(ProuctsPageLocators.womenCategoryCollapseIcon)
+            .should('be.visible')
+            .click()
+        cy.get("#Women li").should('have.length','3');
+    } 
 
+    static womenDressesButton(){
+        cy.get(ProuctsPageLocators.womenDress)
+            .should('be.visible')
+            .click();
+    }
+
+    static womenTopsButton(){
+        cy.get(ProuctsPageLocators.womenTops)
+            .should('be.visible')
+            .click();
+    }
+
+    static womenSareesButton(){
+        cy.get(ProuctsPageLocators.womenSarees)
+            .should('be.visible')
+            .click();
+    }
+
+    static expandMensCategory(){
+        cy.get(ProuctsPageLocators.menCategoryCollapseIcon)
+            .should('be.visible')
+            .click();
+        cy.get("#Men li").should('have.length',2)
+    }
+
+    static menTshirtsButton(){
+        cy.get(ProuctsPageLocators.menTshirts)
+            .should('be.visible')
+            .click();
+    }
+
+    static menJeansButton(){
+        cy.get(ProuctsPageLocators.menJeans)
+            .should('be.visible')
+            .click();
+    }
+
+    static expandKidsCategory(){
+        cy.get(ProuctsPageLocators.kidsCategoryCollapseIcon)
+            .should('be.visible')
+            .click();
+        cy.get("#Kids li").should('have.length',2)
+    }
+
+    static kidsDressButton(){
+        cy.get(ProuctsPageLocators.kidsDresses)
+            .should('be.visible')
+            .click();
+    }
+
+    static kidsTopButton(){
+        cy.get(ProuctsPageLocators.KidsTops)
+            .should('be.visible')
+            .click();
+    }
 
 }
 

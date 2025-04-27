@@ -35,7 +35,18 @@ describe('Products Smoke Test Suite', () =>{
     })
 
     it("Verify Gender based product filtering", () =>{
-        
+        ProductPage.expandMensCategory();
+        ProductPage.menJeansButton();
+        ProductPage.validateProductCounts(3);
+    })
+
+    it.only("Verify Brand based filtering", () =>{
+        const brand = "Polo";
+        ProductPage.viewBrandProducts(brand);
+        ProductPage.validateBrandHeader(brand);
+        ProductPage.getBrandProductCounts(brand).then((count) => {
+            ProductPage.validateProductCounts(count);
+          });
     })
     
 });

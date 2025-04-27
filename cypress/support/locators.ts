@@ -41,7 +41,7 @@ export enum ProuctsPageLocators {
     searchBox = "#search_product",
     searchButton = "#submit_search",
     searchedProductPrice = ".productinfo.text-center h2",
-    searchedProductName = ".productinfo.text-center p",
+    searchedProductName = ".features_items .col-sm-4 p",
     //View Product Details
     viewProductDetailsbutton = "a[href='/product_details/1']",
     productName = ".product-information h2",
@@ -69,11 +69,12 @@ export enum ProuctsPageLocators {
     kidsCategoryCollapseIcon = 'h4[class="panel-title"] a[href="#Kids"]',
     kidsDresses = "a[href='/category_products/4']",
     KidsTops = "a[href='/category_products/5']",
+    productlist = ".features_items .col-sm-4",
 
     //Product Brand
     brandsCategory = ".brands_products",
     branditems = ".brands_products a",
-    brandproductlist = ".features_items .col-sm-4",
+    
     productscrollupButton = "#scrollUp", 
     brandPolo = "a[href*='/brand_products/Polo']",
     brandHM = "a[href*='/brand_products/H&M']",
