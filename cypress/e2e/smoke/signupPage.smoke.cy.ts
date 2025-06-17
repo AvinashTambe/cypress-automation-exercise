@@ -1,7 +1,7 @@
-import SignUpPage from "cypress/support/pages/SignUpPage";
-import LoginPage from "cypress/support/pages/LoginPage";
+import SignUpPage from "cypress/pages/SignUpPage";
+import LoginPage from "cypress/pages/LoginPage";
 import { USER_INFO } from "cypress/support/constants";
-import { SignupPageLocators } from "cypress/support/locators";
+import { SignupPageLocators } from "cypress/locators/locators";
 
 
 describe('Signup Test Suite Negative Testcase', () => {

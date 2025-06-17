@@ -1,5 +1,5 @@
-import { CartLocators } from "../locators";
-import { cartHeaders } from "../constants";
+import { CartLocators } from "cypress/locators/locators";
+import { cartHeaders } from "cypress/support/constants";
 
 class CartPage {
     

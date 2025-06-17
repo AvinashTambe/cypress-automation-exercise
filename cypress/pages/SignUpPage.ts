@@ -1,6 +1,5 @@
-import { SignupPageLocators, LoginPageLocators } from "../locators";
-import { BASE_URL } from  "../constants";
-import { ROUTES } from "../constants";
+import { SignupPageLocators, LoginPageLocators } from "cypress/locators/locators";
+import { BASE_URL, ROUTES } from  "cypress/support/constants";
 
 class SignUpPage {
     

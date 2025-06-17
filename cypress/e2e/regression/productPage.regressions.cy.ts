@@ -1,6 +1,6 @@
-import  ProductPage  from "cypress/support/pages/ProductPage";
+import  ProductPage  from "cypress/pages/ProductPage";
 import { BRANDS, PRODUCT } from "cypress/support/constants";
-import { ProuctsPageLocators } from "cypress/support/locators";
+import { ProuctsPageLocators } from "cypress/locators/locators";
 
 describe('Products Regression Test Suite', () => {
 

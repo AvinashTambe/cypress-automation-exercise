@@ -1,6 +1,6 @@
 import ProductPage from "cypress/support/pages/ProductPage";
 import { BASE_URL, PRODUCT } from "cypress/support/constants";
-import { ProuctsPageLocators } from "cypress/support/locators";
+import { ProuctsPageLocators } from "cypress/locators/locators";
 import CartPage from "cypress/support/pages/CartPage";
 
 describe('Products Smoke Test Suite', () =>{
