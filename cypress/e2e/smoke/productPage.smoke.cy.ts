@@ -1,7 +1,7 @@
-import ProductPage from "cypress/support/pages/ProductPage";
+import ProductPage from "cypress/pages/ProductPage";
 import { BASE_URL, PRODUCT } from "cypress/support/constants";
 import { ProuctsPageLocators } from "cypress/locators/locators";
-import CartPage from "cypress/support/pages/CartPage";
+import CartPage from "cypress/pages/CartPage";
 
 describe('Products Smoke Test Suite', () =>{
    
@@ -44,7 +44,7 @@ describe('Products Smoke Test Suite', () =>{
         const brand = "Polo";
         ProductPage.viewBrandProducts(brand);
         ProductPage.validateBrandHeader(brand);
-        ProductPage.getBrandProductCounts(brand).then((count) => {
+        ProductPage.getBrandProductCounts(brand).then((count:any) => {
             ProductPage.validateProductCounts(count);
           });
     })

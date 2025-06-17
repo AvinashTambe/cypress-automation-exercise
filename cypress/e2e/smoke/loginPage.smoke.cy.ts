@@ -1,5 +1,5 @@
-import LoginPage from "cypress/support/pages/LoginPage";
-import SignUpPage from "cypress/support/pages/SignUpPage";
+import LoginPage from "cypress/pages/LoginPage";
+import SignUpPage from "cypress/pages/SignUpPage";
 import { USER_INFO } from "cypress/support/constants";
 
 
